@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6); /* Gradient background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #1B263B; /* Dark blue */
+            margin-bottom: 20px;
+            text-align: center; /* Center the header */
+            font-family: 'Arial Black', sans-serif; /* Bold header */
+        }
+
+        .signup-container {
+            background-color: white; /* White background for form */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            width: 350px; /* Fixed width */
+            transition: transform 0.3s; /* Smooth transform */
+        }
+
+        .signup-container:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0; /* Space between inputs */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s; /* Smooth transition */
+        }
+
+        input:focus {
+            border-color: #1B263B; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1B263B; /* Dark blue */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+            font-weight: bold; /* Bold button text */
+        }
+
+        button:hover {
+            background-color: #2d3f5d; /* Darker shade on hover */
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .signup-container {
+                width: 90%; /* Full width on small screens */
+            }
+        }
+
+        /* Animation for success/error messages */
+        .success-message {
+            color: green;
+            animation: fadeIn 0.5s;
+        }
+
+        .error-message {
+            color: red;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signupForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:4000/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, email, password }),
+            });
+
+            const data = await response.json();
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = data.message;
+            messageDiv.className = 'message'; // Reset class
+
+            if (response.ok) {
+                messageDiv.classList.add('success-message'); // Add success class
+                setTimeout(() => {
+                    window.location.href = 'login.html'; // Redirect to login page after successful signup
+                }, 1500); // Wait for 1.5 seconds before redirecting
+            } else {
+                messageDiv.classList.add('error-message'); // Add error class
+            }
+        });
+    </script>
+</body>
+</html>
+
+

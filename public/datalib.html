@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACE Data Library</title>
+    <link rel="stylesheet" href="generalstyles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://i.postimg.cc/prm5yMr0/ocean-insight.jpg" alt="PACE Logo">
+            <h1>OCEAN INSIGHT</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="datalib.html">Data Library</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+        
+        <div class="auth-buttons">
+            <button>Login</button>
+            <button>Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="library-container">
+        <!-- Filters Section -->
+        <aside class="filters">
+            <h3>Filter Datasets</h3>
+            <div class="filter-group">
+                <label for="dataset-type">Dataset Type:</label>
+                <select id="dataset-type">
+                    <option value="all">All</option>
+                    <option value="ocean-color">Ocean Color</option>
+                    <option value="atmospheric">Atmospheric</option>
+                    <option value="carbon-cycle">Carbon Cycle</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="date-range">Date Range:</label>
+                <input type="date" id="start-date">
+                <input type="date" id="end-date">
+            </div>
+
+            <div class="filter-group">
+                <label for="region">Ocean Region:</label>
+                <select id="region">
+                    <option value="all">All Regions</option>
+                    <option value="pacific">Pacific Ocean</option>
+                    <option value="atlantic">Atlantic Ocean</option>
+                    <option value="indian">Indian Ocean</option>
+                </select>
+            </div>
+
+            <button class="apply-filters">Apply Filters</button>
+        </aside>
+
+        <!-- Dataset Section -->
+        <section class="data-library">
+            <div class="view-toggle">
+                <button id="grid-view" class="active">Grid View</button>
+                <button id="list-view">List View</button>
+            </div>
+
+            <!-- Dataset Grid/List -->
+            <div id="dataset-container" class="grid-view">
+                <!-- Dataset Cards -->
+                <div class="dataset-card">
+                    <h4>Ocean Color Data</h4>
+                    <p>Explore how light interacts with water and marine life to understand ocean ecosystems.</p>
+                    <span>Type: Ocean Color</span> | <span>Region: Pacific Ocean</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Atmospheric Data</h4>
+                    <p>Discover how aerosols impact climate and the environment.</p>
+                    <span>Type: Atmospheric</span> | <span>Region: Atlantic Ocean</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Carbon Cycle Data</h4>
+                    <p>Track the movement of carbon through the ocean and atmosphere.</p>
+                    <span>Type: Carbon Cycle</span> | <span>Region: Indian Ocean</span>
+                </div>
+
+                <!-- New dataset cards -->
+                <div class="dataset-card">
+                    <h4>Phytoplankton Data</h4>
+                    <p>Monitor the distribution of phytoplankton and their role in the marine ecosystem.</p>
+                    <span>Type: Ocean Color</span> | <span>Region: Atlantic Ocean</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Sea Surface Temperature Data</h4>
+                    <p>Analyze global sea surface temperatures to study climate change and ocean currents.</p>
+                    <span>Type: Ocean Temperature</span> | <span>Region: Pacific Ocean</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Chlorophyll Concentration Data</h4>
+                    <p>Understand the concentration of chlorophyll in the oceans to assess marine productivity.</p>
+                    <span>Type: Ocean Color</span> | <span>Region: Indian Ocean</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Ocean Salinity Data</h4>
+                    <p>Track salinity levels across oceans to better understand the water cycle and climate variability.</p>
+                    <span>Type: Ocean Salinity</span> | <span>Region: Atlantic Ocean</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Marine Debris Data</h4>
+                    <p>Explore data on marine debris distribution to tackle plastic pollution in the oceans.</p>
+                    <span>Type: Pollution</span> | <span>Region: Global</span>
+                </div>
+
+                <div class="dataset-card">
+                    <h4>Ocean Acidification Data</h4>
+                    <p>Examine the effects of increased CO2 levels on ocean acidification and marine life.</p>
+                    <span>Type: Carbon Cycle</span> | <span>Region: Global</span>
+                </div>
+            </div>
+
+            <!-- Pagination (Optional) -->
+            <div class="pagination">
+                <button>Previous</button>
+                <span>Page 1 of 5</span>
+                <button>Next</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="datascript.js"></script>
+</body>
+</html>
+
+
+
